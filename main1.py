@@ -5,17 +5,19 @@ from db import insert_candle
 from main import Kite
 logging.basicConfig(level=logging.DEBUG)
 
-kiteinit = Kite(key, secret)
-kite = kiteinit.get()
-# print(dir(kite))
-print(kite.holdings())
+def initkws():
+    with open('at.txt', 'r') as f:
+        access_token = f.read();
+    return KiteTicker(key, access_token)
 
-
-with open('at.txt', 'r') as f:
-    access_token = f.read();
-print(access_token)
-# Initialise
-kws = KiteTicker(key, access_token)
+try:
+    kws = initkws()
+except:
+    kiteinit = Kite(key,secret)
+    #debug
+    # kite = kiteinit.get()
+    # print(kite.holdings())
+    kws = initkws()
 
 def on_ticks(ws, ticks):
     # Callback to receive ticks.

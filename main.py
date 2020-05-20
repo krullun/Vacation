@@ -59,11 +59,9 @@ class Kite():
 			self.kite.set_access_token(access_token)
 
 			f = open('at.txt', 'w') 
-			f.write(access_token);
+			f.write(access_token); 
 			f.close();
 
 	def get(self):
 		return self.kite;
 #whenever a trading advise is published kite will execute it
-
-#initializing kws
